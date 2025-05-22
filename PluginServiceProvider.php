@@ -1,6 +1,6 @@
 <?php
 
-namespace plugins\helloworld;
+namespace plugins\adminsystem;
 
 use Illuminate\Support\ServiceProvider;
 use App\PluginHook;
