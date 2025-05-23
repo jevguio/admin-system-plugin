@@ -3,7 +3,7 @@
 namespace plugins\adminsystem\controllers;
 
 use App\Http\Controllers\Controller;
-use plugins\adminsystem\controllers\models\TuitionPayment;
+use plugins\adminsystem\models\TuitionPayment;
 use Illuminate\Http\Request;
 
 class TuitionPaymentController extends Controller
