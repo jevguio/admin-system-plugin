@@ -24,7 +24,7 @@ class PluginServiceProvider extends ServiceProvider
                 $data['gitUrl'] ?? ''
             );
             
-        PluginHook::addTopMenu($data['title'] , 'test.plugin');
+        PluginHook::addTopMenu($data['title'] , 'admin.plugin');
         }
         
         $this->loadViewsFrom(__DIR__.'/resources/view', 'helloworld');
