@@ -1,5 +1,6 @@
 <?php
-namespace App\Plugins\TuitionPayment\Models;
+
+namespace plugins\adminsystem\models;
 
 use Illuminate\Database\Eloquent\Model;
 

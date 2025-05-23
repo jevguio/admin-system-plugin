@@ -1,8 +1,9 @@
 <?php
-namespace App\Plugins\TuitionPayment\Controllers;
+
+namespace plugins\adminsystem\controllers;
 
 use App\Http\Controllers\Controller;
-use App\Plugins\TuitionPayment\Models\TuitionPayment;
+use plugins\adminsystem\controllers\models\TuitionPayment;
 use Illuminate\Http\Request;
 
 class TuitionPaymentController extends Controller
