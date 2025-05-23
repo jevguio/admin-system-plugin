@@ -27,7 +27,7 @@ class PluginServiceProvider extends ServiceProvider
         PluginHook::addTopMenu($data['title'] , 'admin.plugin');
         }
         
-        $this->loadViewsFrom(__DIR__.'/resources/view', 'adminsystem');
+        $this->loadViewsFrom(__DIR__.'/resources/view', $data['name'] );
 
         // Register routes
         $this->loadRoutesFrom(__DIR__.'/routes/web.php');

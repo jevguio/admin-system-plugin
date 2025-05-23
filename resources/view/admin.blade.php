@@ -37,6 +37,6 @@
 </script>
 
     <div class="py-12">
-    <h1>Hello World</h1>
+    <h1>Admin View</h1>
     </div>
 </x-app-layout>
