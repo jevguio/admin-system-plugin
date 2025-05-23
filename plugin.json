@@ -2,7 +2,7 @@
   "title": "Admin System",
   "name": "adminsystem",
   "enabled": true,
-  "version": "2.2.9",
+  "version": "2.3.1",
   "provider": "plugins\\adminsystem\\PluginServiceProvider",
   "description": "Admin System Plugin.",
   "gitUrl": "https://github.com/jevguio/admin-system-plugin.git"
