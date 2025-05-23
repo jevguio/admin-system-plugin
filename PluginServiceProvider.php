@@ -7,10 +7,10 @@ use App\PluginHook;
 
 class PluginServiceProvider extends ServiceProvider
 {
-    
+
     public function boot()
     {
-        
+
         $jsonPath = __DIR__ . '/plugin.json';
 
         if (file_exists($jsonPath)) {
@@ -23,14 +23,14 @@ class PluginServiceProvider extends ServiceProvider
                 $data['description'] ?? '',
                 $data['gitUrl'] ?? ''
             );
-            
-        PluginHook::addTopMenu($data['title'] , 'admin.plugin');
+
+            PluginHook::addTopMenu($data['title'], 'admin.plugin', route('admin.plugin', ['gitUrl' => $data['gitUrl']]));
         }
-        
-        $this->loadViewsFrom(__DIR__.'/resources/view', $data['name'] );
+
+        $this->loadViewsFrom(__DIR__ . '/resources/view', $data['name']);
 
         // Register routes
-        $this->loadRoutesFrom(__DIR__.'/routes/web.php');
+        $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
     }
-    
+
 }
