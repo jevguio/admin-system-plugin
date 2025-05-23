@@ -1,11 +1,11 @@
 <?php
-use App\Http\Controllers\SubscriptionController;
+use plugins\adminsystem\controllers\TuitionPaymentController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\PaymentController;
+
+use Illuminate\Support\Facades\File;
 Route::middleware(['web', 'auth'])->group(function () {
-    Route::get('/tuition-payments', [\App\Plugins\TuitionPayment\Controllers\TuitionPaymentController::class, 'index'])->name('admin.plugin');
-    Route::post('/tuition-payments', [\App\Plugins\TuitionPayment\Controllers\TuitionPaymentController::class, 'store']);
+    Route::get('/tuition-payments', [TuitionPaymentController::class, 'index'])->name('admin.plugin');
+    Route::post('/tuition-payments', [TuitionPaymentController::class, 'store']);
 
 });
 
