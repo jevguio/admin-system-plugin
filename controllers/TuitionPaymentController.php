@@ -25,7 +25,7 @@ class TuitionPaymentController extends Controller
         } else {
             // Deny access
  
-            return back()->with('error', 'Failed to install plugin: ');
+            return back()->with('error', 'Subscription Expired');
 
         }
     }

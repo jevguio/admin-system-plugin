@@ -24,13 +24,13 @@ class PluginServiceProvider extends ServiceProvider
                 $data['gitUrl'] ?? ''
             );
 
-            PluginHook::addTopMenu($data['title'], 'admin.plugin', route('admin.plugin', ['gitUrl' => $data['gitUrl']]));
+
+            $this->loadViewsFrom(__DIR__ . '/resources/view', $data['name']);
+
+            // Register routes
+            $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
+            PluginHook::addTopMenu($data['title'], 'admin.plugin',['gitUrl' => $data['gitUrl']]);
         }
-
-        $this->loadViewsFrom(__DIR__ . '/resources/view', $data['name']);
-
-        // Register routes
-        $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
     }
 
 }
