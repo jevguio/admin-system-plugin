@@ -29,7 +29,7 @@ class TuitionPaymentController extends Controller
 
         if ($subscriptions) {
             $payments = TuitionPayment::all();
-            return view('resources::view.TuitionPayment.index', compact('payments'));
+            return view('view::TuitionPayment.index', compact('payments'));
         } else {
             return back()->with('error', 'Subscription Expired');
         }
