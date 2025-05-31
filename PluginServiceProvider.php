@@ -25,11 +25,11 @@ class PluginServiceProvider extends ServiceProvider
             );
 
 
-            $this->loadViewsFrom(__DIR__ . '/resources/view', $data['name']);
+            $this->loadViewsFrom(__DIR__ . '/resources/view', 'view');
 
             // Register routes
             $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
-            PluginHook::addTopMenu($data['title'], 'admin.plugin',['gitUrl' => $data['gitUrl']]);
+            PluginHook::addTopMenu($data['title'], 'admin.plugin', ['gitUrl' => $data['gitUrl']]);
         }
     }
 

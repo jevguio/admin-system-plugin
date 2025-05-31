@@ -5,30 +5,36 @@ namespace plugins\adminsystem\controllers;
 use App\Http\Controllers\Controller;
 use plugins\adminsystem\models\TuitionPayment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Artisan;
 
 class TuitionPaymentController extends Controller
 {
     public function index(Request $request)
     {
-        $subscriptions = auth()->user()->subscriptions()->where('stripe_status', 'active')->get();
+        // Check if table exists
+        if (!Schema::hasTable('tuition_payments')) {
+            Artisan::call('migrate', [
+                '--path' => 'plugins/adminsystem/migrations',
+                '--force' => true,
+            ]);
+        }
 
-        $activationCodes = $subscriptions->pluck('activation_code')->toArray();
+        $subscriptions = auth()
+            ->user()
+            ->subscriptions()
+            ->where('type', '=', 'adminsystem')
+            ->where('stripe_status', '!=', 'canceled')
+            ->first();
 
-        $plugin = collect(\App\PluginHook::getPlugin())->firstWhere('gitUrl', $request->gitUrl);
-
-        if ($plugin && in_array($plugin['activation_code'], $activationCodes)) {
-            // Allow access
-
-
+        if ($subscriptions) {
             $payments = TuitionPayment::all();
-            return view('TuitionPayment::index', compact('payments'));
+            return view('resources::view.TuitionPayment.index', compact('payments'));
         } else {
-            // Deny access
- 
             return back()->with('error', 'Subscription Expired');
-
         }
     }
+
 
     public function store(Request $request)
     {
